@@ -1,34 +1,166 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Achadinhos Soluz</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <main>
-    <div class="logo-container">
-      <img src="logo.png" alt="Logo Achadinhos Soluz">
-    </div>
+:root {
+  --bg: #FAF8F5;          
+  --card: #FFFFFF;        
+  --text: #1A1A1A;        
+  --muted: #666666;       
+  --accent: #D4AF37;      
+  --accent-hover: #B5952F;
+}
 
-    <h1>Achadinhos <span>Soluz</span></h1>
-    <p class="subtitle">Curadoria e Ofertas Inteligentes</p>
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <div class="card">
-      <p>
-        Bem-vindo ao seu novo achadinho favorito. O <strong>Soluz</strong> é uma ferramenta de automação pessoal que garimpa as melhores promoções nas plataformas eBay, Shein e Shopee. Utilizamos Inteligência Artificial para selecionar produtos com estilo, criar curadorias de alta qualidade e compartilhar as melhores ofertas com você.
-      </p>
-    </div>
+body {
+  font-family: "Georgia", serif; 
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  overflow-x: hidden;
+}
 
-    <a class="btn" href="https://t.me/achadinhossoluz" target="_blank" rel="noopener">
-      Ver Ofertas no Telegram
-    </a>
-  </main>
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 60px 20px 40px;
+}
 
-  <footer>
-    <p>© 2026 Achadinhos Soluz. Todos os direitos reservados.</p>
-    <a href="privacy.html">Política de Privacidade</a>
-  </footer>
-</body>
-</html>
+/* --- ANIMAÇÕES --- */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGold {
+  0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.5); }
+  70% { box-shadow: 0 0 0 12px rgba(212, 175, 55, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+}
+
+/* Aplicando as animações */
+.logo-container {
+  margin-bottom: 24px;
+  animation: float 4s ease-in-out infinite; /* Animação de flutuar */
+}
+
+.logo-container img {
+  max-width: 160px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+h1, .subtitle, .card, .btn {
+  opacity: 0;
+  animation: fadeUp 0.8s ease-out forwards; /* Animação de surgir */
+}
+
+h1 { animation-delay: 0.1s; }
+.subtitle { animation-delay: 0.3s; }
+.card { animation-delay: 0.5s; }
+.btn { animation-delay: 0.7s; }
+
+/* --- DESIGN --- */
+h1 {
+  font-size: clamp(2rem, 6vw, 3rem);
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.subtitle {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  color: var(--muted);
+  font-weight: normal;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 36px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid #EBE6DC;
+  border-radius: 12px;
+  padding: 32px 28px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  margin-bottom: 40px;
+}
+
+.card p { 
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--muted); 
+  font-size: 1.05rem; 
+  line-height: 1.8;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--text);
+  color: var(--bg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 16px 40px;
+  border-radius: 4px; 
+  transition: background 0.3s, transform 0.2s;
+  animation: fadeUp 0.8s ease-out forwards 0.7s, pulseGold 2s infinite 2s; /* Pisca em dourado depois que carrega */
+}
+
+.btn:hover, .btn:focus {
+  background: var(--accent);
+  color: var(--text);
+  transform: translateY(-3px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--text);
+  animation: none; /* O botão de voltar não precisa pulsar */
+  opacity: 1;
+}
+
+.btn-outline:hover {
+  background: var(--text);
+  color: var(--bg);
+}
+
+.policy h2 {
+  font-family: "Georgia", serif;
+  color: var(--text);
+  font-size: 1.3rem;
+  border-bottom: 1px solid var(--accent);
+  display: inline-block;
+  margin: 28px 0 12px;
+  padding-bottom: 4px;
+}
+
+.policy p { text-align: left; margin-bottom: 16px; }
+
+footer {
+  padding: 30px 20px;
+  background: #F0ECE1;
+  color: var(--muted);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.85rem;
+}
+
+footer a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid var(--accent);
+}
+
+footer a:hover { color: var(--accent-hover); }
